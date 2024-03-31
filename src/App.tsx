@@ -27,7 +27,7 @@ export default function App() {
     position: "",
     email: "",
     phone: "",
-    photo: "src/assets/celal.jpg", // Default photo path
+    photo: "https://i.hizliresim.com/kef7tcs.jpg", // Default photo path
   });
   const [signature, setSignature] = useState<string>(""); // State to hold the generated signature HTML
   const [copied, setCopied] = useState(false);
@@ -36,6 +36,10 @@ export default function App() {
   useEffect(() => {
     generateSignature(); // Generate signature on initial render
   }, [inputs, imageUrl]); // Re-generate signature when inputs or imageUrl change
+
+  useEffect(() => {
+    document.title = "Email Signature"; // Set webpage title
+  }, []);
 
   function handleInputs(e: React.ChangeEvent<HTMLInputElement>) {
     const { id, value } = e.target;
