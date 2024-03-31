@@ -23,10 +23,10 @@ function SignaturePreview({ signature }: { signature: string }) {
 
 export default function App() {
   const [inputs, setInputs] = useState<PhotoSignatureProps>({
-    fullName: "CelalSengor",
-    position: "Academic Man",
-    email: "celal@itu.edu.tr",
-    phone: "+90 505 050 0505",
+    fullName: "",
+    position: "",
+    email: "",
+    phone: "",
     photo: "src/assets/celal.jpg", // Default photo path
   });
   const [signature, setSignature] = useState<string>(""); // State to hold the generated signature HTML
@@ -66,22 +66,22 @@ export default function App() {
                   <tbody>
                     <tr>
                       <td>
-                        <p style="margin: 0; font-size: 30px; font-weight: 700; color: #454545; margin-bottom: 5px;">${inputs.fullName}</p>
+                        <p style="margin: 0; font-size: 30px; font-weight: 700; color: #454545; margin-bottom: 5px;">${inputs.fullName || "CelalSengor"}</p>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <p style="margin: 0; font-size: 18px; font-weight: 700; color: #454545; margin-bottom: 15px;">${inputs.position}</p>
+                        <p style="margin: 0; font-size: 18px; font-weight: 700; color: #454545; margin-bottom: 15px;">${inputs.position || "Academic Man"}</p>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <p style="margin: 0; font-size: 14px; font-weight: 400; color: #454545; margin-bottom: 3px;">${inputs.phone}</p>
+                        <p style="margin: 0; font-size: 14px; font-weight: 400; color: #454545; margin-bottom: 3px;">${inputs.phone || "+90 505 050 0505"}</p>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <p style="margin: 0; font-size: 14px; font-weight: 400; color: #454545; margin-bottom: 3px;"><a href="mailto:${inputs.email}" target="_blank" style="text-decoration: none; color: blue;">${inputs.email}</a></p>
+                        <p style="margin: 0; font-size: 14px; font-weight: 400; color: #454545; margin-bottom: 3px;"><a href="mailto:${inputs.email || "celal@itu.edu.tr"}" target="_blank" style="text-decoration: none; color: blue;">${inputs.email || "celal@itu.edu.tr"}</a></p>
                       </td>
                     </tr>
                     <tr>
@@ -99,12 +99,6 @@ export default function App() {
     `;
     setSignature(signatureHTML);
 }
-
-  
-  
-  
-  
-  
 
   function handleCopy() {
     const signatureContainer = document.getElementById("signature-container");
